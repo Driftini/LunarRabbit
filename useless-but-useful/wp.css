@@ -1,0 +1,15 @@
+#s42_background {
+	background: #007b80;
+}
+
+.ui_window {
+	box-shadow: 1px 0 #000,0 1px #000,1px 1px #000,inset 1px 1px #fff
+}
+
+.ui_window__head {
+	background: #666;
+}
+
+.ui_window--active .ui_window__head, .skin_background {
+    background: darkblue;
+}
