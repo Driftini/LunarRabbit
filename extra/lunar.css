@@ -1,0 +1,9 @@
+.LunarRabbit {
+	min-width: 600px;
+	min-height: 350px;
+}
+
+.LunarRabbit .skin_inset_deep {
+	border: none;
+	box-shadow: none;
+}

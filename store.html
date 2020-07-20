@@ -4,26 +4,43 @@
         <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.4/build/98.css">
     </head>
     <body class="window">
-        <div class="section" id="list">
+        <div class="section">
           	<div class="filters">
           		<input id="f_name" type="text" placeholder="Filter by name...">
           		<input id="f_auth" type="text" placeholder="Filter by author...">
           	</div>
+          	<div id="list"></div>
+          	<p id="refreshing">Refreshing...</p>
       	</div>
-
         <div class="section">
-            <p id="noapp">Click an app in the left section to display its details.</p>
+            <p id="noapp">Click on an app in the left section to display its details.</p>
+          
           	<div id="settings">
-          		<input type="checkbox" id="s_title"><label for="s_title">Custom titlebar (disable for better integration with custom themes)</label>
-              	<div class="forcebottom">
+          		<input type="checkbox" id="s_verbose"><label for="s_verbose">Log actions in console (for debugging purposes)</label>
+              	<br>
+              	<input type="checkbox" id="s_fverbose"><label for="s_fverbose">Log filters in console (for debugging purposes)</label>
+              	<div class="settingsbuttons">
               		<button id="s_save">Save settings</button>
               		<button id="s_uninstall">Uninstall</button>
               	</div>
           	</div>
+          
+          	<div id="details">
+              	<header class="top">
+                  	<img id="a_img">
+                  	<div class="topinfo">
+                      	<span><strong id="a_name"></strong><label id="a_ver"></label></span>
+                      	<label id="a_auth"></label>
+                      	<label id="a_date">Last update: </label>
+                  	</div>
+                  <button id="a_install"><label class="icon">S</label>Install</button>
+              	</header>
+          	</div>
         </div>
       	<button id="settingsbutton">H</button>
+      	<button id="refreshbutton">P</button>
         <script>
-        let LunarDir = "/a/desktop/"
+        let LunarDir = "/a/LunarRabbit/"
           
         top.$file.open(LunarDir + "LunarRabbit/store.css","String",function(css){
             let style = document.createElement("style")

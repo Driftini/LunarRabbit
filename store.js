@@ -1,3 +1,20 @@
+let verbose = true
+let verboseFilter = false
+
+function verboseLog(text) {
+    if (verbose) {
+        console.log(text)
+    }
+}
+
+function filterLog(text) {
+    if (verboseFilter) {
+        console.log(text)
+    }
+}
+
+verboseLog("LunarRabbit instance started.")
+
 class App {
     constructor(name, icon, shortdesc, fulldesc, auth, date, ver, script) {
         this.name = name
@@ -11,41 +28,84 @@ class App {
     }
 }
 
+var appArray = []
+
 const Lunar = {
     appList: document.getElementById("list"),
-    appendApp: function(obj) {
+    refresh: () => {
+        verboseLog("Refresh started.")
+        
+        Lunar.appList.style.display = "none"
+        
+        let apps = Lunar.appList.getElementsByTagName("button")
+        
+        for (i = 0; i < apps.length; i++) {
+            Lunar.appList.removeChild(apps[i])
+        }
+        
+        document.getElementById("refreshing").style.display = "flex"
+        document.getElementById("refreshbutton").disabled = true
+        // fetch shit
+        
+        appArray = [
+            {
+                name: "Test App",
+                icon: "https://www.windows93.net/c/sys/skins/w93/floppy.png",
+                shortdesc: "Just a test app",
+                fulldesc: "Lorem ipsum dolor sit amet",
+                auth: "Driftini",
+                date: "20/20/2020",
+                ver: "1.2",
+                script: ""
+            }
+        ]
+        
+        Lunar.refreshDone()
+    },
+    refreshDone: () => {
+        appArray.forEach(Lunar.appendApp)
+        Lunar.appList.style.display = "block"
+        document.getElementById("refreshing").style.display = "none"
+        document.getElementById("refreshbutton").disabled = false
+        
+        verboseLog("Refresh done.")
+    },
+    appendApp: (value) => {
+        verboseLog("Appending following app:")
+        verboseLog(value)
+        
         let appended = document.createElement("button")
-
+        
         let appendedIcon = document.createElement("img")
-        appendedIcon.src = obj.icon
+        appendedIcon.src = value.icon
         
         let appendedRow = document.createElement("div")
         appendedRow.classList = ["row"]
-
+        
         let appendedName = document.createElement("label")
-        appendedName.innerText = obj.name
+        appendedName.innerText = value.name
         appendedName.classList = ["name"]
         
         let appendedVer = document.createElement("label")
-        appendedVer.innerText = " (" + obj.ver + ")"
+        appendedVer.innerText = " (" + value.ver + ")"
         appendedVer.classList = ["ver"]
-
+        
         let appendedDesc = document.createElement("label")
-        appendedDesc.innerText = obj.shortdesc
+        appendedDesc.innerText = value.shortdesc
         appendedDesc.classList = ["desc"]
-      
-      	let appendedCol = document.createElement("div")
+        
+        let appendedCol = document.createElement("div")
         appendedCol.classList = ["column"]
-
+        
         let appendedDate = document.createElement("label")
-        appendedDate.innerText = obj.date
+        appendedDate.innerText = value.date
         appendedDate.classList = ["date"]
-
+        
         let appendedAuth = document.createElement("label")
-        appendedAuth.innerText = obj.auth
+        appendedAuth.innerText = value.auth
         appendedAuth.classList = ["auth"]
         
-        this.appList.appendChild(appended)
+        Lunar.appList.appendChild(appended)
         appended.appendChild(appendedIcon)
         appended.appendChild(appendedRow)
         appendedRow.appendChild(appendedName)
@@ -55,51 +115,60 @@ const Lunar = {
         appendedCol.appendChild(appendedAuth)
         appendedCol.appendChild(appendedDate)
     },
-  	viewSettings: () => {
-    	document.getElementById("noapp").style.display = "none"
+    viewSettings: () => {
+        verboseLog("Viewing settings.")
+        
+        document.getElementById("noapp").style.display = "none"
         document.getElementById("settings").style.display = "block"
+        document.getElementById("details").style.display = "none"
     },
-  	viewApp: (obj) => {},
-  	filterAuth: () => {
-    	document.getElementById("f_name").value = ""
-        let apps = document.getElementById("list").getElementsByTagName("button")
+    viewApp: (obj) => {
+        verboseLog("Viewing following app:")
+        verboseLog(obj)
+        
+        document.getElementById("noapp").style.display = "none"
+        document.getElementById("settings").style.display = "none"
+        document.getElementById("details").style.display = "block"
+    },
+    filterAuth: () => {
+        document.getElementById("f_name").value = ""
+        let apps = Lunar.appList.getElementsByTagName("button")
         let filter = document.getElementById("f_auth").value.toUpperCase()
         let auth
         
+        filterLog("Filtering author: " + filter)
+        
         for (i = 0; i < apps.length; i++) {
-        	auth = apps[i].getElementsByClassName("auth")[0]
+            auth = apps[i].getElementsByClassName("auth")[0]
             if (auth.innerText.toUpperCase().indexOf(filter) > -1) {
-                	apps[i].style.display = "flex";
-                } else {
-                	apps[i].style.display = "none";
-                }
+                apps[i].style.display = "flex";
+            } else {
+                apps[i].style.display = "none";
+            }
         }
     },
-	filterName: () => {
-    	document.getElementById("f_auth").value = ""
-        let apps = document.getElementById("list").getElementsByTagName("button")
+    filterName: () => {
+        document.getElementById("f_auth").value = ""
+        let apps = Lunar.appList.getElementsByTagName("button")
         let filter = document.getElementById("f_name").value.toUpperCase()
         let name
         
+        filterLog("Filtering name: " + filter)
+        
         for (i = 0; i < apps.length; i++) {
-        	name = apps[i].getElementsByClassName("name")[0]
+            name = apps[i].getElementsByClassName("name")[0]
             if (name.innerText.toUpperCase().indexOf(filter) > -1) {
-                	apps[i].style.display = "flex";
-                } else {
-                	apps[i].style.display = "none";
-                }
+                apps[i].style.display = "flex";
+            } else {
+                apps[i].style.display = "none";
+            }
         }
     }
 }
 
-let bro = new App("bro","https://www.windows93.net/c/sys/skins/w93/apps/3d.png","The cock is real . . .","I SAID THE COCK IS REAL FINALLY!!! ! !COCOCOCCKFOREVER", "Driftini", "05/07/2020", "1.0")
-
-let bro2 = new App("Sex Installer","https://www.windows93.net/c/sys/skins/w93/install.png","free se x 2012","I SAID THE COCK IS REAL FINALLY!!! ! !COCOCOCCKFOREVER", "Driftini", "06/09/1969", "1.4", "script")
-
-Lunar.appendApp(bro)
-Lunar.appendApp(bro2)
-
+Lunar.refresh()
 
 document.getElementById("settingsbutton").addEventListener("click", Lunar.viewSettings)
+document.getElementById("refreshbutton").addEventListener("click", Lunar.refresh)
 document.getElementById("f_auth").addEventListener("keyup", Lunar.filterAuth)
 document.getElementById("f_name").addEventListener("keyup", Lunar.filterName)
