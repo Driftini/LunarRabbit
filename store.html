@@ -42,12 +42,12 @@
         <script>
         let LunarDir = "/a/LunarRabbit/"
           
-        top.$file.open(LunarDir + "LunarRabbit/store.css","String",function(css){
+        top.$file.open(LunarDir + "store.css","String",function(css){
             let style = document.createElement("style")
             style.innerHTML = css
             document.head.appendChild(style)
         })
-        top.$file.open(LunarDir + "LunarRabbit/store.js","String",function(js){
+        top.$file.open(LunarDir + "store.js","String",function(js){
             let script = document.createElement("script")
             script.innerHTML = js
             document.head.appendChild(script)
