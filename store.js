@@ -76,11 +76,16 @@ const Lunar = {
         
         let appended = document.createElement("button")
         
+        let appendedSeparator = document.createElement("span")
+        
+        let appendedLeft = document.createElement("div")
+        appendedLeft.classList = ["row"]
+        
+        let appendedNameVer = document.createElement("div")
+        appendedNameVer.classList = ["column"]
+        
         let appendedIcon = document.createElement("img")
         appendedIcon.src = value.icon
-        
-        let appendedRow = document.createElement("div")
-        appendedRow.classList = ["row"]
         
         let appendedName = document.createElement("label")
         appendedName.innerText = value.name
@@ -94,8 +99,11 @@ const Lunar = {
         appendedDesc.innerText = value.shortdesc
         appendedDesc.classList = ["desc"]
         
-        let appendedCol = document.createElement("div")
-        appendedCol.classList = ["column"]
+        let appendedRight = document.createElement("div")
+        appendedRight.classList = ["row"]
+
+        let appendedAuthDate = document.createElement("div")
+        appendedNameVer.classList = ["column"]
         
         let appendedDate = document.createElement("label")
         appendedDate.innerText = value.date
@@ -106,14 +114,21 @@ const Lunar = {
         appendedAuth.classList = ["auth"]
         
         Lunar.appList.appendChild(appended)
-        appended.appendChild(appendedIcon)
-        appended.appendChild(appendedRow)
-        appendedRow.appendChild(appendedName)
-        appendedRow.appendChild(appendedVer)
+
+        appended.appendChild(appendedLeft)
+        appendedLeft.appendChild(appendedIcon)
+        appendedLeft.appendChild(appendedNameVer)
+        appendedNameVer.appendChild(appendedName)
+        appendedNameVer.appendChild(appendedVer)
+        appendedLeft.appendChild(appendedSeparator.cloneNode(true))
+
         appended.appendChild(appendedDesc)
-        appended.appendChild(appendedCol)
-        appendedCol.appendChild(appendedAuth)
-        appendedCol.appendChild(appendedDate)
+
+        appended.appendChild(appendedRight)
+        appendedRight.appendChild(appendedSeparator.cloneNode(true))
+        appendedRight.appendChild(appendedAuthDate)
+        appendedAuthDate.appendChild(appendedAuth)
+        appendedAuthDate.appendChild(appendedDate)
     },
     viewSettings: () => {
         verboseLog("Viewing settings.")

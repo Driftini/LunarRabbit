@@ -62,11 +62,12 @@ body.window {
 	display: none;
 }
 
-#list > button > img {
+#list > button img {
     min-width: 32px;
     min-height: 32px;
   	max-width: 32px;
     max-height: 32px;
+  	margin-right: 6px;
 }
 
 #list > button > .column {
@@ -83,8 +84,7 @@ body.window {
 }
 
 #list > button .date, #list > button .ver, #a_ver {
-  	color: #666;
-	text-shadow: 1px 0 0 #fff;
+	color: #666;
 }
 
 #list > button .ver {
@@ -101,6 +101,14 @@ body.window {
 	overflow: hidden;
 	max-width: 60px;
 	white-space: nowrap;
+}
+
+#list > button span {
+    width: 2px;
+    height: 25px;
+    background-color: #757575;
+    border-right: 1px solid #f0f0f0;
+    margin: 3px 15px;
 }
 
 #noapp, #refreshing {
@@ -146,9 +154,15 @@ body.window {
 }
 
 #settings label {
-	display: inline;
-  	user-select: none;
+	display: inline-block;
+	user-select: none;
   	margin-bottom: 3px;
+}
+
+#settings ul {
+	margin: 0;
+  	padding: 0;
+  	list-style: none;
 }
 
 .settingsbuttons {
@@ -178,8 +192,4 @@ body.window {
 .topinfo {
 	display: flex;
   	flex-direction: column;
-}
-
-#a_install {
-	
 }
