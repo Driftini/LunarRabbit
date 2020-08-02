@@ -4,55 +4,43 @@
         <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.4/build/98.css">
     </head>
     <body class="window">
-        <div class="section">
-          	<div class="filters">
-          		<input id="f_name" type="text" placeholder="Filter by name...">
-          		<input id="f_auth" type="text" placeholder="Filter by author...">
-          	</div>
-          	<div id="list"></div>
-          	<p id="refreshing">Refreshing...</p>
-      	</div>
-        <div class="section">
-            <p id="noapp">Click on an app in the left section to display its details.</p>
-          
-          	<div id="settings">
-              	<ul>
-          			<li><input type="checkbox" id="s_verbose"><label for="s_verbose">Log actions in console (for debugging purposes)</label></li>
-              		<li><input type="checkbox" id="s_fverbose"><label for="s_fverbose">Log filters in console (for debugging purposes)</label></li>
-              	</ul>
-              	<div class="settingsbuttons">
-              		<button id="s_save">Save settings</button>
-              		<button id="s_uninstall">Uninstall</button>
-              	</div>
-          	</div>
-          
-          	<div id="details">
-              	<header class="top">
-                  	<img id="a_img">
-                  	<div class="topinfo">
-                      	<span><strong id="a_name"></strong><label id="a_ver"></label></span>
-                      	<label id="a_auth"></label>
-                      	<label id="a_date">Last update: </label>
-                  	</div>
-                  <button id="a_install"><label class="icon">S</label>Install</button>
-              	</header>
-          	</div>
+        <div class="row">
+            <section id="section_left">
+                <ul class="filters">
+                    <li><input type="text" id="filter_name"></li>
+                    <li><input type="text" id="filter_author"></li>
+                </ul>
+                <ul id="app_list">
+                    
+                </ul>
+            </section>
+            <section id="section_right">
+                <div id="no_app">
+                    <p>Click on any app in the left section to view its details.</p>
+                </div>
+                <div id="app_view">
+                    <header class="row">
+                        <img id="app_view_icon">
+                        <div class="column">
+                            <div class="row">
+                                <b id="app_view_name"></b>
+                                <label id="app_view_version tip"></label>
+                            </div>
+                            <label id="app_view_author"></label>
+                        </div>
+                    </header>
+                </div>
+                <div id="settings">
+                    <ul>
+                        <li><b>General</b></li>
+                        <li><input type="checkbox" id="setting_saveonrefresh"><label for="setting_saveonrefresh">Save app list locally</label></li>
+                        <li><i class="tip">App lists will be saved in <b class="lunar_path"></b>.</i></li>
+                        <li><b>Debugging</b></li>
+                        <li><input type="checkbox" id="setting_verbose"></li>
+                        <li><input type="checkbox" id="setting_filterverbose"></li>
+                    </ul>
+                </div>
+            </section>
         </div>
-      	<button id="settingsbutton">H</button>
-      	<button id="refreshbutton">P</button>
-        <script>
-        let LunarDir = "/a/LunarRabbit/"
-          
-        top.$file.open(LunarDir + "store.css","String",function(css){
-            let style = document.createElement("style")
-            style.innerHTML = css
-            document.head.appendChild(style)
-        })
-        top.$file.open(LunarDir + "store.js","String",function(js){
-            let script = document.createElement("script")
-            script.innerHTML = js
-            document.head.appendChild(script)
-        })
-        </script>
     </body>
 </html>
