@@ -1,5 +1,10 @@
+
 # LunarRabbit
 **LunarRabbit** (aka **Lunar**) is an easy-to-use graphical frontend for Windows93 appstores and package managers.
+
+> **NOTE: LunarRabbit has been discontinued since October/November 2020. It will be completely replaced by the Ease App Store around the middle of 2021.**
+> 
+> **https://github.com/EaseStore/**
 
 ## Installation
 Given the very early phase in development, Lunar doesn't benefit from a proper installer yet. Installation has to be done manually for the time being but don't that scare you: it should take less than 5 minutes.
