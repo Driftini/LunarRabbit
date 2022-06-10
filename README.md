@@ -6,6 +6,9 @@
 > 
 > **https://github.com/EaseStore/**
 
+![](20201120.png)
+> One of the last screenshots before the project's death
+
 ## Installation
 Given the very early phase in development, Lunar doesn't benefit from a proper installer yet. Installation has to be done manually for the time being but don't that scare you: it should take less than 5 minutes.
 
